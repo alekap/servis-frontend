@@ -1,0 +1,9 @@
+<select [(ngModel)]="selectedOption" name="first">
+        <option *ngFor="let o of options">
+          {{o.name}}
+        </option>
+      </select>
+<button (click)="print()">Click me</button>
+
+<p>Selected option: {{ selectedOption }}</p>
+<p>Button output: {{ printedOption }}</p>

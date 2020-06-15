@@ -1,0 +1,23 @@
+<div class="car-box car-box-bg-image text-center" style="margin-right:50px">
+		<p class="model">Zakazi Popravku</p>
+    <form (submit)="zakazipopravku($event)">
+		<ul class="features-list">
+      <li><strong>Broj Sasije:</strong>
+       <select id="sasija" >
+         <option>Izaberite auto</option>
+         <option *ngFor="let vozilo of vozila">{{vozilo.broj_sasije}}</option>
+        </select></li>
+			<li><strong>Radno mesto:</strong> 
+      <select id="rm">
+        <option value="1">Mehanika</option>
+        <option value="2">Elektrika</option>
+        <option value="3">Vulkanizer</option>
+        <option value="4">Perionica</option>   
+      </select></li>
+			<li><strong>Opis:</strong> <input type="text" id="opis"></li>
+     
+		</ul>
+      <input type="submit" value="Zakazi" class="btn-primary">
+      
+    </form> 
+	</div>

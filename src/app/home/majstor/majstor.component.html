@@ -1,0 +1,47 @@
+<h1 class="text-center">Popravke na cekanju</h1>
+
+
+	<div class="car-box car-box-bg-image text-center" *ngFor="let popravka of popravke" style="margin-right:50px">
+		<p class="model">{{popravka.id_model}}</p>
+		<ul class="features-list">
+			<li><strong>Broj sasije:</strong> {{popravka.broj_sasije}}</li>
+			<li><strong>Registracija:</strong> {{popravka.reg_br}}</li>
+			<li><strong>Godiste:</strong> {{popravka.godiste}}</li>
+			<li><strong>klima:</strong> {{popravka.klima}}</li>
+      <li><strong>status:</strong> {{popravka.status_popravke}}</li>
+      <li><strong>radno mesto:</strong> {{popravka.naziv_rm}}</li>
+      <li><strong>opis:</strong> {{popravka.opis}}</li>
+		</ul>
+    <button class="btn-primary">Zapocni popravku</button>
+	</div>
+
+  <h1 class="text-center">Delovi</h1>
+
+
+	<div class="car-box car-box-bg-image text-center" style="margin-right:50px; max-width:2000px;">
+    <label >Search</label>
+      <form (submit)="search($event)">
+            <input type="text" id="search" placeholder="Search">
+            <input type="submit" value="Pretrazi">
+      </form>
+    <table>
+      <tr>
+        <th>Sifra</th>
+        <th>Ime</th>
+        <th>Cena</th>
+        <th>Opis</th>
+      </tr>
+      <tr *ngFor="let item of pageOfItems" >
+        <th>{{item.sifra_dela}}</th>
+        <th>{{item.ime_dela}}</th>
+        <th>{{item.cena_dela}}</th>
+        <th>{{item.opis_dela}}</th>
+      </tr>
+    </table>
+     <div class="card-footer pb-0 pt-3">
+        <jw-pagination [items]="delovi" (changePage)="onChangePage($event)"></jw-pagination>
+    </div>
+	</div>
+
+
+        

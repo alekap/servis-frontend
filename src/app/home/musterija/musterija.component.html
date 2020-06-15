@@ -1,0 +1,28 @@
+<h1 class="text-center">Popravke</h1>
+
+
+	<div class="car-box car-box-bg-image text-center" *ngFor="let popravka of popravke" style="margin-right:50px">
+		<p class="model">{{popravka.id_model}}</p>
+		<ul class="features-list">
+			<li><strong>Broj sasije:</strong> {{popravka.broj_sasije}}</li>
+			<li><strong>Registracija:</strong> {{popravka.reg_br}}</li>
+			<li><strong>Godiste:</strong> {{popravka.godiste}}</li>
+			<li><strong>klima:</strong> {{popravka.klima}}</li>
+      <li><strong>status:</strong> {{popravka.status_popravke}}</li>
+      <li><strong>radno mesto:</strong> {{popravka.naziv_rm}}</li>
+      <li><strong>opis:</strong> {{popravka.opis}}</li>
+		</ul>
+	</div>
+<h1 class="text-center">Vasa vozila</h1>
+
+
+	<div class="car-box car-box-bg-image text-center" *ngFor="let vozilo of vozila" style="margin-right:50px">
+		<p class="model">{{vozilo.id_model}}</p>
+		<ul class="features-list">
+			<li><strong>Broj sasije:</strong> {{vozilo.broj_sasije}}</li>
+			<li><strong>Registracija:</strong> {{vozilo.reg_br}}</li>
+			<li><strong>Godiste:</strong> {{vozilo.godiste}}</li>
+			<li><strong>klima:</strong> {{vozilo.Klima}}</li>
+		</ul>
+		<button class="btn-primary">Obrisi</button>
+	</div>

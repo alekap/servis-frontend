@@ -1,0 +1,28 @@
+<div class="car-box car-box-bg-image text-center" style="margin-right:50px">
+		<p class="model">Dodaj vozilo</p>
+    <form (submit)="dodajvozilo($event)">
+		<ul class="features-list">
+      <li><strong>Marka:</strong> 
+      <select [(ngModel)]="selectedOption" [ngModelOptions]="{standalone: true}" (ngModelChange)="getmodel()">
+        <option>Izaberite Marku</option>
+        <option *ngFor="let marka of marke">{{marka.id_marke}}</option>
+      </select></li>
+      <li><strong>Model:</strong>
+       <select id="model">
+         <option>Izaberite Model</option>
+         <option *ngFor="let model of modeli">{{model.id_model}}</option>
+        </select></li>
+			<li><strong>Broj sasije:</strong> <input type="text" id="broj_sasije"></li>
+			<li><strong>Registracija:</strong> <input type="text" id="reg_br"></li>
+			<li><strong>Godiste:</strong> <input type="text" id="godiste"></li>
+			<li><strong>klima:</strong> 
+       <select id="klima">
+       <option value="true" >Da</option>
+       <option value="false" >Ne</option>
+        </select></li> 
+     
+		</ul>
+      <input type="submit" value="dodaj" class="btn-primary">
+      
+    </form> 
+	</div>
