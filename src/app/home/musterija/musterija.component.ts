@@ -23,9 +23,13 @@ vozila: Vozilo[];
     opis:string
   }[];
 
+  refresh(): void {
+    window.location.reload();
+}
+
   obrisi(event,vozilo){
-    this.deletevoz.deleteVozilo(vozilo.broj_sasije).subscribe()
-    
+    this.deletevoz.deleteVozilo(vozilo.broj_sasije).subscribe();
+    this.refresh();
 
   }
 

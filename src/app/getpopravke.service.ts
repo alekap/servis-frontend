@@ -10,11 +10,11 @@ export class GetpopravkeService {
 
     if (flag){
 
-      return this.http.get('https://cors-anywhere.herokuapp.com/http://178.221.149.5:8081/popravkeuser/'
+      return this.http.get('https://cors-anywhere.herokuapp.com/http://178.221.149.5:8081/api/popravkeuser/'
     )
 
     }else{
-    return this.http.get('https://cors-anywhere.herokuapp.com/http://178.221.149.5:8081/popravkeuser/', {params:{'jmbg':jmbg}}
+    return this.http.get('https://cors-anywhere.herokuapp.com/http://178.221.149.5:8081/api/popravkeuser/', {params:{'jmbg':jmbg}}
     )
     }
     
