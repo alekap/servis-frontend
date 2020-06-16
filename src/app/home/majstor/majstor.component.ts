@@ -7,6 +7,7 @@ import { JwPaginationComponent } from 'jw-angular-pagination';
 import { VrsipopravkuService } from '../../vrsipopravku.service'
 import { PopravkainfoService } from '../../popravkainfo.service'
 
+
 @Component({
   selector: 'app-majstor',
   templateUrl: './majstor.component.html',
@@ -14,10 +15,22 @@ import { PopravkainfoService } from '../../popravkainfo.service'
 })
 export class MajstorComponent implements OnInit {
 
-  
-    flag:boolean = true; /* oznacava da li se servis poziva sa majstor naloga ili sa musterija naloga */
+  constructor(private fetchpopravke: GetpopravkeService,private fetchdeo:GetdeoService, private vrsipop: VrsipopravkuService, private popinfo: PopravkainfoService,private Router:Router) { }
     param:string=' '
+    majstor_id=localStorage.getItem('id');
     popravke:{
+    id_popravke:number
+    reg_br:string
+    broj_sasije:string
+    godiste: number
+    klima:boolean
+    id_model:string
+    status_popravke:string
+    naziv_rm:string
+    opis:string
+  }[];
+  popravkezap:{
+    id_majstora: number
     id_popravke:number
     reg_br:string
     broj_sasije:string
@@ -34,14 +47,17 @@ export class MajstorComponent implements OnInit {
     cena_dela:number;
     opis_dela:string;
   };
-  zapocnipop(event, popravka){
-    console.log(popravka)
-       this.vrsipop.putVrsipopravku(localStorage.getItem('id'),popravka.id_popravke).subscribe(
+  zapocnipop(event, popravka, flag){
+    if(!flag){
+       this.vrsipop.putVrsipopravku(this.majstor_id,popravka.id_popravke).subscribe(
        data=>{
-       this.popinfo.popravkaInfo=data;
-       console.log(this.popinfo.popravkaInfo)
+       this.popinfo.popravkaInfo = data;
       }
-    )
+    )}
+    else{
+      this.popinfo.popravkainfo = popravka;
+    }
+    this.Router.navigate(['popravka'])
 
   };
 
@@ -54,7 +70,7 @@ export class MajstorComponent implements OnInit {
       })
   }
 
-  constructor(private fetchpopravke: GetpopravkeService,private fetchdeo:GetdeoService, private vrsipop: VrsipopravkuService, private popinfo: PopravkainfoService) { }
+
 
   ngOnInit() {
 
@@ -63,11 +79,18 @@ export class MajstorComponent implements OnInit {
         this.delovi=data;
       })
 
-    this.fetchpopravke.fetchPopravke(localStorage.getItem('id'),this.flag).subscribe(
+    this.fetchpopravke.fetchPopravke(this.majstor_id, 'Zakazano').subscribe(
       data=>{
         this.popravke=data;
       })
 
+    this.fetchpopravke.fetchPopravke(this.majstor_id, 'Radi se' ).subscribe(
+      data=>{
+        this.popravkezap=data;
+        console.log(this.popravkezap)
+        console.log(data)
+      })
+      
       
   }
     

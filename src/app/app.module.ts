@@ -33,7 +33,8 @@ import { PopravkainfoService } from './popravkainfo.service';
       { path: '', component: LoginuserComponent},
       { path: 'majstor', component: LoginComponent },
       { path: 'home', component: HomeComponent },
-            { path: 'test', component: TestComponent }
+      { path: 'popravka', component: PopravkaComponent },
+      { path: 'test', component: TestComponent }
     ])],
   declarations: [ JwPaginationComponent,AppComponent, HelloComponent, LoginComponent, HomeComponent, LoginuserComponent, TestComponent, DodajvoziloComponent, ZakazipopravkuComponent, MusterijaComponent, MajstorComponent, PopravkaComponent ],
   bootstrap:    [ AppComponent ],

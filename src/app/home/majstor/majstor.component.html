@@ -1,4 +1,4 @@
-<h1 class="text-center">Popravke na cekanju</h1>
+<h1 class="text-center">Zakazane popravke</h1>
 
 
 	<div class="car-box car-box-bg-image text-center" *ngFor="let popravka of popravke" style="margin-right:50px">
@@ -13,6 +13,25 @@
       <li><strong>opis:</strong> {{popravka.opis}}</li>
 		</ul>
     <button class="btn-primary" (click)="zapocnipop($event,popravka)">Zapocni popravku</button>
+	</div>
+
+  <h1 class="text-center">Zapocete popravke</h1>
+
+
+	<div class="car-box car-box-bg-image text-center" *ngFor="let popravka of popravkezap"  style="margin-right:50px">
+    <ng-container *ngIf="popravka.id_majstora==majstor_id">
+		<p class="model">{{popravka.id_model}}</p>
+		<ul class="features-list">
+			<li><strong>Broj sasije:</strong> {{popravka.broj_sasije}}</li>
+			<li><strong>Registracija:</strong> {{popravka.reg_br}}</li>
+			<li><strong>Godiste:</strong> {{popravka.godiste}}</li>
+			<li><strong>klima:</strong> {{popravka.klima}}</li>
+      <li><strong>status:</strong> {{popravka.status_popravke}}</li>
+      <li><strong>radno mesto:</strong> {{popravka.naziv_rm}}</li>
+      <li><strong>opis:</strong> {{popravka.opis}}</li>
+		</ul>
+    <button class="btn-primary" (click)="zapocnipop($event,popravka)">Nastavi popravku</button>
+    </ng-container >
 	</div>
 
   <h1 class="text-center">Delovi</h1>
