@@ -25,6 +25,7 @@ import { MajstorComponent } from './home/majstor/majstor.component';
 import { GetdeoService } from './getdeo.service';
 import {JwPaginationComponent} from 'jw-angular-pagination';
 import { DeletevoziloService } from './deletevozilo.service';
+import { PopravkaComponent } from './home/popravka/popravka.component';
 @NgModule({
   imports:      [ BrowserModule, FormsModule,HttpClientModule, RouterModule.forRoot([
       { path: '', component: LoginuserComponent},
@@ -32,7 +33,7 @@ import { DeletevoziloService } from './deletevozilo.service';
       { path: 'home', component: HomeComponent },
             { path: 'test', component: TestComponent }
     ])],
-  declarations: [ JwPaginationComponent,AppComponent, HelloComponent, LoginComponent, HomeComponent, LoginuserComponent, TestComponent, DodajvoziloComponent, ZakazipopravkuComponent, MusterijaComponent, MajstorComponent ],
+  declarations: [ JwPaginationComponent,AppComponent, HelloComponent, LoginComponent, HomeComponent, LoginuserComponent, TestComponent, DodajvoziloComponent, ZakazipopravkuComponent, MusterijaComponent, MajstorComponent, PopravkaComponent ],
   bootstrap:    [ AppComponent ],
   providers: [LoginService, UserinfoService, GetmajstorService, GetvoziloService, GetmarkaService, GetmodelService, GetpopravkeService, PutvoziloService, PutpopravkaService, GetdeoService, DeletevoziloService]
 })
