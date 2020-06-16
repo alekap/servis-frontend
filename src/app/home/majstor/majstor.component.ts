@@ -35,11 +35,11 @@ export class MajstorComponent implements OnInit {
     opis_dela:string;
   };
   zapocnipop(event, popravka){
-
-    this.vrsipop.putVrsipopravku(localStorage.getItem('id'),popravka.id_popravke).subscribe(
-      data=>{
-        this.popinfo.popravkaInfo=data;
-
+    console.log(popravka)
+       this.vrsipop.putVrsipopravku(localStorage.getItem('id'),popravka.id_popravke).subscribe(
+       data=>{
+       this.popinfo.popravkaInfo=data;
+       console.log(this.popinfo.popravkaInfo)
       }
     )
 
