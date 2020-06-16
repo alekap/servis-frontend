@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GetpopravkeService } from '../../getpopravke.service';
 import { GetdeoService } from '../../getdeo.service';
-import { Deo} from '../../deo'
-import {JwPaginationComponent} from 'jw-angular-pagination'
+import { Deo} from '../../deo';
+import {JwPaginationComponent} from 'jw-angular-pagination';
+import { VrsipopravkuService } from '../../vrsipopravku.service'
 
 @Component({
   selector: 'app-majstor',
@@ -16,6 +17,7 @@ export class MajstorComponent implements OnInit {
     flag:boolean = true; /* oznacava da li se servis poziva sa majstor naloga ili sa musterija naloga */
     param:string=' '
     popravke:{
+    id_popravke:number
     reg_br:string
     broj_sasije:string
     godiste: number
@@ -31,7 +33,13 @@ export class MajstorComponent implements OnInit {
     cena_dela:number;
     opis_dela:string;
   };
-  search(){
+  zapocnipop(event, popravka){
+
+    this.vrsipop.putVrsipopravku(localStorage.getItem('id'),popravka.id_popravke)
+
+  };
+
+  search(event){
     const target=event.target
     this.param=target.querySelector('#search').value
     this.fetchdeo.fetchDeo(this.param).subscribe(
@@ -40,7 +48,7 @@ export class MajstorComponent implements OnInit {
       })
   }
 
-  constructor(private fetchpopravke: GetpopravkeService,private fetchdeo:GetdeoService) { }
+  constructor(private fetchpopravke: GetpopravkeService,private fetchdeo:GetdeoService, private vrsipop: VrsipopravkuService) { }
 
   ngOnInit() {
 
