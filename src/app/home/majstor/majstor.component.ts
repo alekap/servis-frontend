@@ -3,8 +3,9 @@ import { Router } from '@angular/router';
 import { GetpopravkeService } from '../../getpopravke.service';
 import { GetdeoService } from '../../getdeo.service';
 import { Deo} from '../../deo';
-import {JwPaginationComponent} from 'jw-angular-pagination';
+import { JwPaginationComponent } from 'jw-angular-pagination';
 import { VrsipopravkuService } from '../../vrsipopravku.service'
+import { PopravkainfoService } from '../../popravkainfo.service'
 
 @Component({
   selector: 'app-majstor',
@@ -35,7 +36,12 @@ export class MajstorComponent implements OnInit {
   };
   zapocnipop(event, popravka){
 
-    this.vrsipop.putVrsipopravku(localStorage.getItem('id'),popravka.id_popravke)
+    this.vrsipop.putVrsipopravku(localStorage.getItem('id'),popravka.id_popravke).subscribe(
+      data=>{
+        this.popinfo.popravkaInfo=data;
+
+      }
+    )
 
   };
 
@@ -48,7 +54,7 @@ export class MajstorComponent implements OnInit {
       })
   }
 
-  constructor(private fetchpopravke: GetpopravkeService,private fetchdeo:GetdeoService, private vrsipop: VrsipopravkuService) { }
+  constructor(private fetchpopravke: GetpopravkeService,private fetchdeo:GetdeoService, private vrsipop: VrsipopravkuService, private popinfo: PopravkainfoService) { }
 
   ngOnInit() {
 
