@@ -6,12 +6,17 @@ import { Observable } from "rxjs";
 export class GetpopravkeService {
 
    constructor(private http: HttpClient) { }
-  fetchPopravke(jmbg,flag): Observable<any> {
+  fetchPopravke(jmbg,flag,id): Observable<any> {
 
     if (flag){
 
+      if(!id){
       return this.http.get('https://cors-anywhere.herokuapp.com/http://178.221.149.5:8081/api/popravkeuser/', {params:{'status':flag}}
-    )
+      );}else{
+        return this.http.get('https://cors-anywhere.herokuapp.com/http://178.221.149.5:8081/api/popravkeuser/', {params:{'status':flag,
+        'id':id}}
+      );
+      }
 
     }else{
     return this.http.get('https://cors-anywhere.herokuapp.com/http://178.221.149.5:8081/api/popravkeuser/', {params:{'jmbg':jmbg}}

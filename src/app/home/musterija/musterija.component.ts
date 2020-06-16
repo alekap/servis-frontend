@@ -11,6 +11,7 @@ import { DeletevoziloService } from '../../deletevozilo.service';
 })
 export class MusterijaComponent implements OnInit {
   flag:boolean = false;
+  id =false;
 vozila: Vozilo[];
   popravke:{
     reg_br:string

@@ -19,7 +19,6 @@
 
 
 	<div class="car-box car-box-bg-image text-center" *ngFor="let popravka of popravkezap"  style="margin-right:50px">
-    <ng-container *ngIf="popravka.id_majstora==majstor_id">
 		<p class="model">{{popravka.id_model}}</p>
 		<ul class="features-list">
 			<li><strong>Broj sasije:</strong> {{popravka.broj_sasije}}</li>
@@ -30,8 +29,7 @@
       <li><strong>radno mesto:</strong> {{popravka.naziv_rm}}</li>
       <li><strong>opis:</strong> {{popravka.opis}}</li>
 		</ul>
-    <button class="btn-primary" (click)="zapocnipop($event,popravka)">Nastavi popravku</button>
-    </ng-container >
+    <button class="btn-primary" (click)="zapocnipop($event,popravka,true)">Nastavi popravku</button>
 	</div>
 
   <h1 class="text-center">Delovi</h1>

@@ -56,6 +56,7 @@ export class MajstorComponent implements OnInit {
     )}
     else{
       this.popinfo.popravkainfo = popravka;
+      console.log('popravka nastavljena')
     }
     this.Router.navigate(['popravka'])
 
@@ -84,7 +85,7 @@ export class MajstorComponent implements OnInit {
         this.popravke=data;
       })
 
-    this.fetchpopravke.fetchPopravke(this.majstor_id, 'Radi se' ).subscribe(
+    this.fetchpopravke.fetchPopravke(this.majstor_id, 'Radi se', this.majstor_id ).subscribe(
       data=>{
         this.popravkezap=data;
         console.log(this.popravkezap)
