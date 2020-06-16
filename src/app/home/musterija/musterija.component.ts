@@ -22,6 +22,10 @@ vozila: Vozilo[];
     opis:string
   }[];
 
+  obrisi(event,vozilo){
+    
+  }
+
   constructor(private fetchvozilo: GetvoziloService, private fetchpopravke: GetpopravkeService) { }
 
   ngOnInit() {
