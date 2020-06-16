@@ -24,6 +24,10 @@ getmodel(){
         this.modeli=data;
       })
 }
+
+  refresh(): void {
+    window.location.reload();
+}
   constructor(private Getmarka: GetmarkaService,private Getmodel:GetmodelService, private putvozilo:PutvoziloService) { }
 dodajvozilo(event){
   const target=event.target
@@ -33,6 +37,7 @@ dodajvozilo(event){
  const god = target.querySelector('#godiste').value
  const klima = target.querySelector('#klima').value
  this.putvozilo.putVozilo(sasija,model,reg,god,klima,localStorage.getItem('id')).subscribe()
+ this.refresh();
 
 
   }

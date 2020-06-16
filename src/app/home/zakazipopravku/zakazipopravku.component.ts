@@ -10,6 +10,9 @@ import { PutpopravkaService} from './putpopravka.service'
 })
 export class ZakazipopravkuComponent implements OnInit {
 
+  refresh(): void {
+    window.location.reload();
+}
   constructor(private fetchvozilo: GetvoziloService, private putpopravka: PutpopravkaService) { }
   vozila: Vozilo[];
   zakazipopravku(event){
@@ -18,6 +21,7 @@ export class ZakazipopravkuComponent implements OnInit {
      const rm = target.querySelector('#rm').value
      const opis = target.querySelector('#opis').value
     this.putpopravka.putPopravku(sasija,rm,opis).subscribe()
+    this.refresh();
   }
   ngOnInit() {
     this.fetchvozilo.fetchVozilo(localStorage.getItem('id')).subscribe(
