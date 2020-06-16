@@ -24,7 +24,7 @@ import { MusterijaComponent } from './home/musterija/musterija.component';
 import { MajstorComponent } from './home/majstor/majstor.component';
 import { GetdeoService } from './getdeo.service';
 import {JwPaginationComponent} from 'jw-angular-pagination';
-import { DeletevoziloService } from './deletevozilo.service'
+import { DeletevoziloService } from './deletevozilo.service';
 @NgModule({
   imports:      [ BrowserModule, FormsModule,HttpClientModule, RouterModule.forRoot([
       { path: '', component: LoginuserComponent},

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Vozilo } from '../../vozilo';
-import { GetvoziloService} from '../../getvozilo.service'
+import { GetvoziloService} from '../../getvozilo.service';
 import { GetpopravkeService } from '../../getpopravke.service';
+import { DeletevoziloService } from '../../deletevozilo.service';
 @Component({
   selector: 'app-musterija',
   templateUrl: './musterija.component.html',
@@ -23,10 +24,12 @@ vozila: Vozilo[];
   }[];
 
   obrisi(event,vozilo){
+    this.deletevoz.deleteVozilo(vozilo.broj_sasije).subscribe()
     
+
   }
 
-  constructor(private fetchvozilo: GetvoziloService, private fetchpopravke: GetpopravkeService) { }
+  constructor(private fetchvozilo: GetvoziloService, private fetchpopravke: GetpopravkeService, private deletevoz: DeletevoziloService) { }
 
   ngOnInit() {
         this.fetchpopravke.fetchPopravke(localStorage.getItem('id'),this.flag).subscribe(

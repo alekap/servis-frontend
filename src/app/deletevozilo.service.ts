@@ -8,7 +8,7 @@ export class DeletevoziloService {
 
   constructor(private http: HttpClient) { }
 
-    deleteDeo(sasija): Observable<any> {
+    deleteVozilo(sasija): Observable<any> {
     return this.http.delete('https://cors-anywhere.herokuapp.com/http://178.221.149.5:8081/api/vozilo/'+sasija
     )
   
