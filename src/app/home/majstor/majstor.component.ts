@@ -6,6 +6,7 @@ import { Deo} from '../../deo';
 import { JwPaginationComponent } from 'jw-angular-pagination';
 import { VrsipopravkuService } from '../../vrsipopravku.service'
 import { PopravkainfoService } from '../../popravkainfo.service'
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 
 
 @Component({
