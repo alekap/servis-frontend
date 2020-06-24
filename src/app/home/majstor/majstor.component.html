@@ -44,34 +44,43 @@
 
 <div class="example-container mat-elevation-z8">
 
-  <mat-table [dataSource]="dataSource" matSort>
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
-    <ng-container matColumnDef="sifra_dela">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Sifra </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.sifra_dela}} </mat-cell>
-    </ng-container>
 
-    <ng-container matColumnDef="ime_dela">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Ime </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.ime_dela}} </mat-cell>
-    </ng-container>
+  <!-- Sifra Column -->
+  <ng-container matColumnDef="sifra_dela">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Sifra </th>
+    <td mat-cell *matCellDef="let element"> {{element.sifra_dela}} </td>
+  </ng-container>
 
-    <ng-container matColumnDef="cena_dela">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Cena </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.cena_dela}} </mat-cell>
-    </ng-container>
+  <!-- Ime Column -->
+  <ng-container matColumnDef="ime_dela">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Ime </th>
+    <td mat-cell *matCellDef="let element"> {{element.ime_dela}} </td>
+  </ng-container>
 
-    <ng-container matColumnDef="opis_dela">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Opis </mat-header-cell>
-      <mat-cell *matCellDef="let row" > {{row.opis_dela}} </mat-cell>
-    </ng-container>
+  <!-- Cena Column -->
+  <ng-container matColumnDef="cena_dela">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Cena </th>
+    <td mat-cell *matCellDef="let element"> {{element.cena_dela}} </td>
+  </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;">
-    </mat-row>
-  </mat-table>
+  <!-- Opis Column -->
+  <ng-container matColumnDef="opis_dela">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Opis </th>
+    <td mat-cell *matCellDef="let element"> {{element.opis_dela}} </td>
+  </ng-container>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    <!-- Dodaj deo Column -->
+    <ng-container matColumnDef="dodaj_deo">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Dodaj </th>
+    <td mat-cell *matCellDef="let element"> <button class="btn-primary" (click)="dodajdeo($event,element)">Dodaj</button> </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)"></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 </div>
 	</div>
 

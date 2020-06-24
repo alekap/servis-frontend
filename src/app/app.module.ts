@@ -31,11 +31,12 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatPaginatorModule} from '@angular/material/paginator'
 import {MatSortModule} from '@angular/material/sort'
 import {MatTableModule} from '@angular/material/table'
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule,HttpClientModule,BrowserAnimationsModule,MatPaginatorModule, MatSortModule, MatTableModule, RouterModule.forRoot([
+  imports:      [ BrowserModule, FormsModule,HttpClientModule,BrowserAnimationsModule,MatPaginatorModule, MatSortModule, MatTableModule, MatCheckboxModule, RouterModule.forRoot([
       { path: '', component: LoginuserComponent},
       { path: 'majstor', component: LoginComponent },
       { path: 'home', component: HomeComponent },

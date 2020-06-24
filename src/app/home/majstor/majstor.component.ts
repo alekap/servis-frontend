@@ -16,7 +16,7 @@ import {MatTableDataSource} from '@angular/material/table'
   styleUrls: ['./majstor.component.css']
 })
 export class MajstorComponent implements OnInit {
-displayedColumns = ['sifra_dela', 'ime_dela', 'cena_dela', 'opis_dela'];
+displayedColumns = ['sifra_dela', 'ime_dela', 'cena_dela', 'opis_dela','dodaj_deo'];
 dataSource: MatTableDataSource<deo>;
 @ViewChild(MatPaginator) paginator: MatPaginator;
 @ViewChild(MatSort) sort: MatSort;
@@ -69,6 +69,10 @@ dataSource: MatTableDataSource<deo>;
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
   }
+
+dodajdeo(event,deo){
+  console.log(deo)
+}
   
   ngOnInit() {
 

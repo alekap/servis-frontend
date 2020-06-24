@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PopravkainfoService } from '../../popravkainfo.service';
 import { Router } from '@angular/router';
+import { MatPaginator } from '@angular/material/paginator'
+import { MatSort } from '@angular/material/sort'
+import { MatTableDataSource } from '@angular/material/table'
+import { Deo } from '../../deo';
 
 @Component({
   selector: 'app-popravka',
@@ -9,7 +13,12 @@ import { Router } from '@angular/router';
 })
 export class PopravkaComponent implements OnInit {
 
-  constructor(private popinfo: PopravkainfoService, private Router:Router) { }
+displayedColumns = ['sifra_dela', 'ime_dela', 'cena_dela', 'opis_dela','dodaj_deo'];
+dataSource: MatTableDataSource<deo>;
+@ViewChild(MatPaginator) paginator: MatPaginator;
+@ViewChild(MatSort) sort: MatSort;
+
+  constructor(private popinfo: PopravkainfoService, private Router:Router, private deo: Deo) { }
  popravka:{
     id_majstora: number
     id_popravke:number
