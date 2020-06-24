@@ -6,7 +6,7 @@ export class GetvoziloService {
 
   constructor(private http: HttpClient) { }
   fetchVozilo(id): Observable<any> {
-    return this.http.get('https://cors-anywhere.herokuapp.com/http://178.221.149.5:8081/api/vozilo', {params:{'jmbg':id}}
+    return this.http.get('https://cors-anywhere.herokuapp.com/http://109.92.82.97:8081/api/vozilo', {params:{'jmbg':id}}
     )
   
     

@@ -55,10 +55,43 @@
         <th>{{item.opis_dela}}</th>
       </tr>
     </table>
-     <div class="card-footer pb-0 pt-3">
-        <jw-pagination [items]="delovi" (changePage)="onChangePage($event)"></jw-pagination>
-    </div>
-	</div>
+
+    <div class="example-container mat-elevation-z8">
+
+  <mat-table [dataSource]="dataSource" matSort>
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="sifra">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Sifra </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.sifra}} </mat-cell>
+    </ng-container>
+
+    <!-- Progress Column -->
+    <ng-container matColumnDef="ime">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Ime </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.ime}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="cena">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Cena </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.cena}} </mat-cell>
+    </ng-container>
+
+    <!-- Color Column -->
+    <ng-container matColumnDef="opis">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Opis </mat-header-cell>
+      <mat-cell *matCellDef="let row" > {{row.opis}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+  </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
+
 
 
         

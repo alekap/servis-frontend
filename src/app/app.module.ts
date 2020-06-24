@@ -28,16 +28,19 @@ import { DeletevoziloService } from './deletevozilo.service';
 import { PopravkaComponent } from './home/popravka/popravka.component';
 import { VrsipopravkuService } from './vrsipopravku.service';
 import { PopravkainfoService } from './popravkainfo.service';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material'
+
+
 @NgModule({
-  imports:      [ BrowserModule, FormsModule,HttpClientModule, RouterModule.forRoot([
+  imports:      [MatPaginator, MatSort, MatTableDataSource, BrowserAnimationsModule, BrowserModule, FormsModule,HttpClientModule, RouterModule.forRoot([
       { path: '', component: LoginuserComponent},
       { path: 'majstor', component: LoginComponent },
       { path: 'home', component: HomeComponent },
       { path: 'popravka', component: PopravkaComponent },
       { path: 'test', component: TestComponent }
     ])],
-  declarations: [ MatPaginator, MatSort, MatTableDataSource, JwPaginationComponent,AppComponent, HelloComponent, LoginComponent, HomeComponent, LoginuserComponent, TestComponent, DodajvoziloComponent, ZakazipopravkuComponent, MusterijaComponent, MajstorComponent, PopravkaComponent ],
+  declarations: [ JwPaginationComponent,AppComponent, HelloComponent, LoginComponent, HomeComponent, LoginuserComponent, TestComponent, DodajvoziloComponent, ZakazipopravkuComponent, MusterijaComponent, MajstorComponent, PopravkaComponent ],
   bootstrap:    [ AppComponent ],
   providers: [LoginService, UserinfoService, GetmajstorService, GetvoziloService, GetmarkaService, GetmodelService, GetpopravkeService, PutvoziloService, PutpopravkaService, GetdeoService, DeletevoziloService, VrsipopravkuService, PopravkainfoService]
 })

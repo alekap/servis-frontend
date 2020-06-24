@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { GetpopravkeService } from '../../getpopravke.service';
 import { GetdeoService } from '../../getdeo.service';
@@ -15,6 +15,9 @@ import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
   styleUrls: ['./majstor.component.css']
 })
 export class MajstorComponent implements OnInit {
+displayedColumns = ['sifra', 'ime', 'cena', 'opis'];
+dataSource;
+
 
   constructor(private fetchpopravke: GetpopravkeService,private fetchdeo:GetdeoService, private vrsipop: VrsipopravkuService, private popinfo: PopravkainfoService,private Router:Router) { }
     param:string=' '
@@ -42,12 +45,7 @@ export class MajstorComponent implements OnInit {
     naziv_rm:string
     opis:string
   }[];
-  delovi:{
-    sifra_dela:number;
-    ime_dela:string;
-    cena_dela:number;
-    opis_dela:string;
-  };
+  delovi: deo;
   zapocnipop(event, popravka, flag){
     if(!flag){
        this.vrsipop.putVrsipopravku(this.majstor_id,popravka.id_popravke).subscribe(
@@ -71,7 +69,7 @@ export class MajstorComponent implements OnInit {
         this.delovi=data;
       })
   }
-
+  
 
 
   ngOnInit() {
@@ -80,6 +78,7 @@ export class MajstorComponent implements OnInit {
       data=>{
         this.delovi=data;
       })
+      this.dataSource = new MatTableDataSource(this.delovi);
 
     this.fetchpopravke.fetchPopravke(this.majstor_id, 'Zakazano').subscribe(
       data=>{
@@ -92,6 +91,9 @@ export class MajstorComponent implements OnInit {
         console.log(this.popravkezap)
         console.log(data)
       })
+
+
+
       
       
   }
@@ -102,4 +104,10 @@ export class MajstorComponent implements OnInit {
         // update current page of items
         this.pageOfItems = event;
     }
+}
+export interface deo {
+  sifra: number;
+  ime: string;
+  cena: number;
+  opis: string;
 }
