@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator'
 import { MatSort } from '@angular/material/sort'
 import { MatTableDataSource } from '@angular/material/table'
+import { GetdeoService } from '../../getdeo.service';
 import { Deo } from '../../deo';
 
 @Component({
@@ -14,11 +15,12 @@ import { Deo } from '../../deo';
 export class PopravkaComponent implements OnInit {
 
 displayedColumns = ['sifra_dela', 'ime_dela', 'cena_dela', 'opis_dela','dodaj_deo'];
-dataSource: MatTableDataSource<deo>;
+dataSource: MatTableDataSource<Deo>;
 @ViewChild(MatPaginator) paginator: MatPaginator;
 @ViewChild(MatSort) sort: MatSort;
+delovi: Deo;
 
-  constructor(private popinfo: PopravkainfoService, private Router:Router, private deo: Deo) { }
+  constructor(private popinfo: PopravkainfoService, private Router:Router, private fetchdeo:GetdeoService) { }
  popravka:{
     id_majstora: number
     id_popravke:number
@@ -31,6 +33,15 @@ dataSource: MatTableDataSource<deo>;
     naziv_rm:string
     opis:string
   };
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
+  }
+
+dodajdeo(event,deo){
+  console.log(deo)
+}
 
 
   ngOnInit() {
@@ -39,6 +50,13 @@ dataSource: MatTableDataSource<deo>;
     }
     this.popravka = this.popinfo.popravkaInfo
     console.log(this.popravka)
+        this.fetchdeo.fetchDeo(this.param).subscribe(
+      data=>{
+        this.delovi=data;
+        this.dataSource = new MatTableDataSource(this.delovi);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      })
   }
 
 }
