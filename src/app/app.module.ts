@@ -33,6 +33,9 @@ import {MatSortModule} from '@angular/material/sort'
 import {MatTableModule} from '@angular/material/table'
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { ZavrsipopService } from './zavrsipop.service';
+import { AdddeoService } from './adddeo.service';
+import { GetugrdeoService } from './getugrdeo.service';
+
 
 
 
@@ -46,6 +49,6 @@ import { ZavrsipopService } from './zavrsipop.service';
     ])],
   declarations: [ AppComponent, HelloComponent, LoginComponent, HomeComponent, LoginuserComponent, TestComponent, DodajvoziloComponent, ZakazipopravkuComponent, MusterijaComponent, MajstorComponent, PopravkaComponent ],
   bootstrap:    [ AppComponent ],
-  providers: [LoginService, UserinfoService, GetmajstorService, GetvoziloService, GetmarkaService, GetmodelService, GetpopravkeService, PutvoziloService, PutpopravkaService, GetdeoService, DeletevoziloService, VrsipopravkuService, PopravkainfoService, ZavrsipopService]
+  providers: [LoginService, UserinfoService, GetmajstorService, GetvoziloService, GetmarkaService, GetmodelService, GetpopravkeService, PutvoziloService, PutpopravkaService, GetdeoService, DeletevoziloService, VrsipopravkuService, PopravkainfoService, ZavrsipopService, AdddeoService, a]
 })
 export class AppModule { }

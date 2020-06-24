@@ -7,6 +7,8 @@ import { MatTableDataSource } from '@angular/material/table'
 import { GetdeoService } from '../../getdeo.service';
 import { Deo } from '../../deo';
 import { ZavrsipopService } from '../../zavrsipop.service';
+import { AdddeoService } from '../../adddeo.service';
+
 
 @Component({
   selector: 'app-popravka',
@@ -21,8 +23,15 @@ dataSource: MatTableDataSource<Deo>;
 @ViewChild(MatSort) sort: MatSort;
 delovi: Deo;
 param:string=' '
+ugrdelovi:{
+  sifra_dela:number
+  ime_dela:string
+  cena_dela:number
+  kolicina:number
 
-  constructor(private popinfo: PopravkainfoService, private Router:Router, private fetchdeo:GetdeoService, private zavrsipopr: ZavrsipopService) { }
+}[];
+
+  constructor(private popinfo: PopravkainfoService, private Router:Router, private fetchdeo:GetdeoService, private zavrsipopr: ZavrsipopService, private addeo: AdddeoService) { }
  popravka:{
     id_majstora: number
     id_popravke:number
@@ -42,7 +51,7 @@ param:string=' '
   }
 
 dodajdeo(event,deo){
-  console.log(deo)
+  this.addeo.addDeo(deo.sifra_dela,this.popravka.id_popravke).subscribe()
 }
   logoutuser(event){
     localStorage.clear();
@@ -69,6 +78,7 @@ dodajdeo(event,deo){
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       })
+
   }
 
 }

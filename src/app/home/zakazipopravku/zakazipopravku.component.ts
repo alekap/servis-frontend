@@ -21,7 +21,8 @@ export class ZakazipopravkuComponent implements OnInit {
      const rm = target.querySelector('#rm').value
      const opis = target.querySelector('#opis').value
     this.putpopravka.putPopravku(sasija,rm,opis).subscribe()
-    this.refresh();
+    console.log(sasija,rm,opis)
+
   }
   ngOnInit() {
     this.fetchvozilo.fetchVozilo(localStorage.getItem('id')).subscribe(

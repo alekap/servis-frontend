@@ -32,58 +32,6 @@
     <button class="btn-primary" (click)="zapocnipop($event,popravka,true)">Nastavi popravku</button>
 	</div>
 
-  <h1 class="text-center">Delovi</h1>
-
-
-	<div class="car-box car-box-bg-image text-center" style="margin-right:50px; max-width:2000px;">
-    <label >Search</label>
-<div class="example-header">
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
-
-</div>
-
-<div class="example-container mat-elevation-z8">
-
-<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-
-
-  <!-- Sifra Column -->
-  <ng-container matColumnDef="sifra_dela">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Sifra </th>
-    <td mat-cell *matCellDef="let element"> {{element.sifra_dela}} </td>
-  </ng-container>
-
-  <!-- Ime Column -->
-  <ng-container matColumnDef="ime_dela">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Ime </th>
-    <td mat-cell *matCellDef="let element"> {{element.ime_dela}} </td>
-  </ng-container>
-
-  <!-- Cena Column -->
-  <ng-container matColumnDef="cena_dela">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Cena </th>
-    <td mat-cell *matCellDef="let element"> {{element.cena_dela}} </td>
-  </ng-container>
-
-  <!-- Opis Column -->
-  <ng-container matColumnDef="opis_dela">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Opis </th>
-    <td mat-cell *matCellDef="let element"> {{element.opis_dela}} </td>
-  </ng-container>
-
-    <!-- Dodaj deo Column -->
-    <ng-container matColumnDef="dodaj_deo">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Dodaj </th>
-    <td mat-cell *matCellDef="let element"> <button class="btn-primary" (click)="dodajdeo($event,element)">Dodaj</button> </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)"></tr>
-</table>
-<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-</div>
-	</div>
-
 
 
 
