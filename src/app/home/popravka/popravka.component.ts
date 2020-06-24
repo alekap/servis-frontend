@@ -6,6 +6,7 @@ import { MatSort } from '@angular/material/sort'
 import { MatTableDataSource } from '@angular/material/table'
 import { GetdeoService } from '../../getdeo.service';
 import { Deo } from '../../deo';
+import { ZavrsipopService } from '../../zavrsipop.service';
 
 @Component({
   selector: 'app-popravka',
@@ -20,9 +21,8 @@ dataSource: MatTableDataSource<Deo>;
 @ViewChild(MatSort) sort: MatSort;
 delovi: Deo;
 param:string=' '
-majstor_id=localStorage.getItem('id');
 
-  constructor(private popinfo: PopravkainfoService, private Router:Router, private fetchdeo:GetdeoService) { }
+  constructor(private popinfo: PopravkainfoService, private Router:Router, private fetchdeo:GetdeoService, private zavrsipopr: ZavrsipopService) { }
  popravka:{
     id_majstora: number
     id_popravke:number
@@ -48,6 +48,11 @@ dodajdeo(event,deo){
     localStorage.clear();
     this.Router.navigate([''])
   }
+  zavrsipop(event, popravka){
+       this.zavrsipopr.Zavrsipopravku(popravka.id_popravke).subscribe()
+    this.Router.navigate(['home'])
+
+  };
 
 
   ngOnInit() {
