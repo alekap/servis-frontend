@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+		
+		<title>Car Workshop</title>
+
+	</head>
+
+
+	<body class="header-collapse">
+		
+		<div id="site-content">
+			
+			<header class="site-header">
+				<div class="container">
+					<a id="branding" href="#">
+						<h1 class="site-title">StateOf<span>Disrepair</span></h1>
+					</a>
+
+					<nav class="main-navigation">
+						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+						<ul class="menu">
+							<li class="menu-item current-menu-item"><a href="index.html">Home</a></li>
+							<li class="menu-item"><a (click)="logoutuser($event)" href="#" role="button">Logout ({{user[0].ime}})</a></li>
+						</ul>
+					</nav>
+					<nav class="mobile-navigation"></nav>
+				</div>
+			</header> <!-- .site-header -->
+      <div class="car-box car-box-bg-image text-center" style="margin-right:50px" *ngIf='popravka'>
+		<p class="model">{{popravka.id_model}}</p>
+		<ul class="features-list">
+			<li><strong>Broj sasije:</strong> {{popravka.broj_sasije}}</li>
+			<li><strong>Registracija:</strong> {{popravka.reg_br}}</li>
+			<li><strong>Godiste:</strong> {{popravka.godiste}}</li>
+			<li><strong>klima:</strong> {{popravka.klima}}</li>
+      <li><strong>status:</strong> {{popravka.status_popravke}}</li>
+      <li><strong>radno mesto:</strong> {{popravka.naziv_rm}}</li>
+      <li><strong>opis:</strong> {{popravka.opis}}</li>
+		</ul>
+    <button class="btn-primary" (click)="zapocnipop($event,popravka)"> Zavrsi popravku</button>
+	</div>
+		</div>
+	</body>
+</html>

@@ -57,7 +57,7 @@ dataSource: MatTableDataSource<deo>;
       }
     )}
     else{
-      this.popinfo.popravkainfo = popravka;
+      this.popinfo.popravkaInfo = popravka;
       console.log('popravka nastavljena')
     }
     this.Router.navigate(['popravka'])
