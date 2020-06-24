@@ -23,7 +23,6 @@ import { PutpopravkaService } from './home/zakazipopravku/putpopravka.service';
 import { MusterijaComponent } from './home/musterija/musterija.component';
 import { MajstorComponent } from './home/majstor/majstor.component';
 import { GetdeoService } from './getdeo.service';
-import {JwPaginationComponent} from 'jw-angular-pagination';
 import { DeletevoziloService } from './deletevozilo.service';
 import { PopravkaComponent } from './home/popravka/popravka.component';
 import { VrsipopravkuService } from './vrsipopravku.service';
@@ -43,7 +42,7 @@ import {MatTableModule} from '@angular/material/table'
       { path: 'popravka', component: PopravkaComponent },
       { path: 'test', component: TestComponent }
     ])],
-  declarations: [ JwPaginationComponent,AppComponent, HelloComponent, LoginComponent, HomeComponent, LoginuserComponent, TestComponent, DodajvoziloComponent, ZakazipopravkuComponent, MusterijaComponent, MajstorComponent, PopravkaComponent ],
+  declarations: [ AppComponent, HelloComponent, LoginComponent, HomeComponent, LoginuserComponent, TestComponent, DodajvoziloComponent, ZakazipopravkuComponent, MusterijaComponent, MajstorComponent, PopravkaComponent ],
   bootstrap:    [ AppComponent ],
   providers: [LoginService, UserinfoService, GetmajstorService, GetvoziloService, GetmarkaService, GetmodelService, GetpopravkeService, PutvoziloService, PutpopravkaService, GetdeoService, DeletevoziloService, VrsipopravkuService, PopravkainfoService]
 })

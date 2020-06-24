@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { GetpopravkeService } from '../../getpopravke.service';
 import { GetdeoService } from '../../getdeo.service';
 import { Deo} from '../../deo';
-import { JwPaginationComponent } from 'jw-angular-pagination';
 import { VrsipopravkuService } from '../../vrsipopravku.service'
 import { PopravkainfoService } from '../../popravkainfo.service'
 import {MatPaginator} from '@angular/material/paginator'
@@ -65,17 +64,6 @@ dataSource: MatTableDataSource<deo>;
 
   };
 
-  search(event){
-    const target=event.target
-    this.param=target.querySelector('#search').value
-    this.fetchdeo.fetchDeo(this.param).subscribe(
-      data=>{
-        this.delovi=data;
-        this.dataSource = this.delovi;
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-      })
-  }
     applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
@@ -92,8 +80,6 @@ dataSource: MatTableDataSource<deo>;
         this.dataSource.sort = this.sort;
       })
       
-
-
     this.fetchpopravke.fetchPopravke(this.majstor_id, 'Zakazano').subscribe(
       data=>{
         this.popravke=data;
@@ -104,20 +90,8 @@ dataSource: MatTableDataSource<deo>;
         this.popravkezap=data;
         console.log(this.popravkezap)
         console.log(data)
-      })
-
-
-
-      
-      
+      })   
   }
-    
-
-    pageOfItems: Array<any>;
-        onChangePage(event) {
-        // update current page of items
-        this.pageOfItems = event;
-    }
 }
 export interface deo {
   sifra_dela: number;
