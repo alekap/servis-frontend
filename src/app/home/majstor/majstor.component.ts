@@ -6,7 +6,9 @@ import { Deo} from '../../deo';
 import { JwPaginationComponent } from 'jw-angular-pagination';
 import { VrsipopravkuService } from '../../vrsipopravku.service'
 import { PopravkainfoService } from '../../popravkainfo.service'
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {MatPaginator} from '@angular/material/paginator'
+import {MatSort} from '@angular/material/sort'
+import {MatTableDataSource} from '@angular/material/table'
 
 
 @Component({
@@ -15,8 +17,10 @@ import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
   styleUrls: ['./majstor.component.css']
 })
 export class MajstorComponent implements OnInit {
-displayedColumns = ['sifra', 'ime', 'cena', 'opis'];
-dataSource;
+displayedColumns = ['sifra_dela', 'ime_dela', 'cena_dela', 'opis_dela'];
+dataSource: MatTableDataSource<deo>;
+@ViewChild(MatPaginator) paginator: MatPaginator;
+@ViewChild(MatSort) sort: MatSort;
 
 
   constructor(private fetchpopravke: GetpopravkeService,private fetchdeo:GetdeoService, private vrsipop: VrsipopravkuService, private popinfo: PopravkainfoService,private Router:Router) { }
@@ -67,18 +71,28 @@ dataSource;
     this.fetchdeo.fetchDeo(this.param).subscribe(
       data=>{
         this.delovi=data;
+        this.dataSource = this.delovi;
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       })
   }
+    applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
+  }
   
-
-
   ngOnInit() {
 
     this.fetchdeo.fetchDeo(this.param).subscribe(
       data=>{
         this.delovi=data;
+        this.dataSource = new MatTableDataSource(this.delovi);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       })
-      this.dataSource = new MatTableDataSource(this.delovi);
+      
+
 
     this.fetchpopravke.fetchPopravke(this.majstor_id, 'Zakazano').subscribe(
       data=>{
@@ -106,8 +120,8 @@ dataSource;
     }
 }
 export interface deo {
-  sifra: number;
-  ime: string;
-  cena: number;
-  opis: string;
+  sifra_dela: number;
+  ime_dela: string;
+  cena_dela: number;
+  opis_dela: string;
 }

@@ -29,11 +29,14 @@ import { PopravkaComponent } from './home/popravka/popravka.component';
 import { VrsipopravkuService } from './vrsipopravku.service';
 import { PopravkainfoService } from './popravkainfo.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material'
+import {MatPaginatorModule} from '@angular/material/paginator'
+import {MatSortModule} from '@angular/material/sort'
+import {MatTableModule} from '@angular/material/table'
+
 
 
 @NgModule({
-  imports:      [MatPaginator, MatSort, MatTableDataSource, BrowserAnimationsModule, BrowserModule, FormsModule,HttpClientModule, RouterModule.forRoot([
+  imports:      [ BrowserModule, FormsModule,HttpClientModule,BrowserAnimationsModule,MatPaginatorModule, MatSortModule, MatTableModule, RouterModule.forRoot([
       { path: '', component: LoginuserComponent},
       { path: 'majstor', component: LoginComponent },
       { path: 'home', component: HomeComponent },
