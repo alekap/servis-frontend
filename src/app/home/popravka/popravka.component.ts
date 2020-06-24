@@ -19,6 +19,8 @@ dataSource: MatTableDataSource<Deo>;
 @ViewChild(MatPaginator) paginator: MatPaginator;
 @ViewChild(MatSort) sort: MatSort;
 delovi: Deo;
+param:string=' '
+majstor_id=localStorage.getItem('id');
 
   constructor(private popinfo: PopravkainfoService, private Router:Router, private fetchdeo:GetdeoService) { }
  popravka:{
@@ -42,6 +44,10 @@ delovi: Deo;
 dodajdeo(event,deo){
   console.log(deo)
 }
+  logoutuser(event){
+    localStorage.clear();
+    this.Router.navigate([''])
+  }
 
 
   ngOnInit() {
@@ -53,6 +59,7 @@ dodajdeo(event,deo){
         this.fetchdeo.fetchDeo(this.param).subscribe(
       data=>{
         this.delovi=data;
+        console.log(this.delovi)
         this.dataSource = new MatTableDataSource(this.delovi);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
