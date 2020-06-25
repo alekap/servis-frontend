@@ -8,7 +8,7 @@ import { GetdeoService } from '../../getdeo.service';
 import { Deo } from '../../deo';
 import { ZavrsipopService } from '../../zavrsipop.service';
 import { AdddeoService } from '../../adddeo.service';
-
+import { GetugrdeoService } from '../../getugrdeo.service';
 
 @Component({
   selector: 'app-popravka',
@@ -31,7 +31,7 @@ ugrdelovi:{
 
 }[];
 
-  constructor(private popinfo: PopravkainfoService, private Router:Router, private fetchdeo:GetdeoService, private zavrsipopr: ZavrsipopService, private addeo: AdddeoService) { }
+  constructor(private popinfo: PopravkainfoService, private Router:Router, private fetchdeo:GetdeoService, private zavrsipopr: ZavrsipopService, private addeo: AdddeoService, private ugrdeo: GetugrdeoService) { }
  popravka:{
     id_majstora: number
     id_popravke:number
@@ -78,6 +78,11 @@ dodajdeo(event,deo){
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       })
+    this.ugrdeo.fetchugrDeo(this.popravka.id_popravke).subscribe(
+      data=>{
+        this.ugrdelovi=data
+      }
+    )
 
   }
 

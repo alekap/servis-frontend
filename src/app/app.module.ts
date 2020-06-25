@@ -49,6 +49,6 @@ import { GetugrdeoService } from './getugrdeo.service';
     ])],
   declarations: [ AppComponent, HelloComponent, LoginComponent, HomeComponent, LoginuserComponent, TestComponent, DodajvoziloComponent, ZakazipopravkuComponent, MusterijaComponent, MajstorComponent, PopravkaComponent ],
   bootstrap:    [ AppComponent ],
-  providers: [LoginService, UserinfoService, GetmajstorService, GetvoziloService, GetmarkaService, GetmodelService, GetpopravkeService, PutvoziloService, PutpopravkaService, GetdeoService, DeletevoziloService, VrsipopravkuService, PopravkainfoService, ZavrsipopService, AdddeoService, a]
+  providers: [LoginService, UserinfoService, GetmajstorService, GetvoziloService, GetmarkaService, GetmodelService, GetpopravkeService, PutvoziloService, PutpopravkaService, GetdeoService, DeletevoziloService, VrsipopravkuService, PopravkainfoService, ZavrsipopService, AdddeoService, GetugrdeoService]
 })
 export class AppModule { }

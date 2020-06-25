@@ -47,6 +47,24 @@
     <button class="btn-primary" (click)="zavrsipop($event,popravka)"> Zavrsi popravku</button>
       </div>
 
+       <div class="car-box car-box-bg-image text-center" style="margin-right:50px">
+		<p class="model">Ugradjeni Delovi</p>
+		<table>
+      <tr>
+        <th>Sifra</th>
+        <th>Ime</th>
+        <th>Cena</th>
+        <th>Kolicina</th>
+      </tr>
+      <tr *ngFor="let deo of ugrdelovi">
+        <td>{{deo.sifra_dela}}</td>
+        <td>{{deo.ime_dela}} </td>
+        <td>{{deo.cena_dela}} </td>
+        <td>{{deo.kolicina}} </td>
+      </tr>
+		</table>
+      </div>
+
 
 	<div class="car-box car-box-bg-image text-center" style="margin-right:50px; max-width:2000px;">
     <label >Search</label>
